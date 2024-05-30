@@ -20,13 +20,9 @@ public class VentanaPrincipal extends JFrame {
         JMenu menuCambios = new JMenu("Cambios");
 
         JMenuItem menuItemAgregarAuto = new JMenuItem("Agregar Auto");
-        JMenuItem menuItemAgregarCliente = new JMenuItem("Agregar Cliente");
         JMenuItem menuItemEliminarAuto = new JMenuItem("Eliminar Auto");
-        JMenuItem menuItemEliminarCliente = new JMenuItem("Eliminar Cliente");
         JMenuItem menuItemConsultarAutos = new JMenuItem("Consultar Autos");
-        JMenuItem menuItemConsultarClientes = new JMenuItem("Consultar Clientes");
         JMenuItem menuItemModificarAuto = new JMenuItem("Modificar Auto");
-        JMenuItem menuItemModificarCliente = new JMenuItem("Modificar Cliente");
 
         menuItemAgregarAuto.addActionListener(new ActionListener() {
             @Override
@@ -35,13 +31,9 @@ public class VentanaPrincipal extends JFrame {
         });
 
         menuAltas.add(menuItemAgregarAuto);
-        menuAltas.add(menuItemAgregarCliente);
         menuBajas.add(menuItemEliminarAuto);
-        menuBajas.add(menuItemEliminarCliente);
         menuConsultas.add(menuItemConsultarAutos);
-        menuConsultas.add(menuItemConsultarClientes);
         menuCambios.add(menuItemModificarAuto);
-        menuCambios.add(menuItemModificarCliente);
 
         menuOperaciones.add(menuAltas);
         menuOperaciones.add(menuBajas);
