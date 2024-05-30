@@ -5,7 +5,6 @@ import modelo.Automovil;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class AutomovilDAO {
      ConexionBD conexion = new ConexionBD();
