@@ -2,6 +2,9 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import conexionBD.ConexionBD;
 
 public class VentanaLogin extends JFrame {
     private JPanel panelLogin;
@@ -9,6 +12,7 @@ public class VentanaLogin extends JFrame {
     private JPasswordField password;
     private JLabel lblUsuario, lblTitulo;
     private JLabel lblpassword;
+    private JButton btnInicio;
 
 
     public VentanaLogin(){
@@ -37,6 +41,16 @@ public class VentanaLogin extends JFrame {
         password = new JPasswordField(20);
         password.setBounds(140, 90, 100, 25);
         panelLogin.add(password);
+
+        btnInicio = new JButton("INICIAR ");
+        btnInicio.setBounds(90, 130, 120, 25);
+        btnInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // autenticar();
+            }
+        });
+        panelLogin.add(btnInicio);
 
         setVisible(true);
     }
