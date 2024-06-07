@@ -41,11 +41,11 @@ public class VentanaAltas extends JInternalFrame {
 
     }
     private boolean validarCampos() {
-        String idAutomovilText = idAutomovil.getText();
-        String modeloText = modelo.getText();
-        String fechaFabricacionText = fecha_fabricacion.getText();
-        String placaText = placa.getText();
-        String marcaIdText = Marca_idMarca.getText();
+        String idAutomovilText = txt_idAutomovil.getText();
+        String modeloText = txt_modelo.getText();
+        String fechaFabricacionText = txt_fechaFabricacion.getText();
+        String placaText = txt_placa.getText();
+        String marcaIdText = txt_MarcaIdMarca.getText();
 
         Pattern idAutomovilPattern = Pattern.compile("^[A-Za-z0-9]+$");
         Pattern modeloPattern = Pattern.compile("^[A-Za-z0-9 ]+$");
