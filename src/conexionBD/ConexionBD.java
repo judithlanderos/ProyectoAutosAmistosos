@@ -11,6 +11,7 @@ public class ConexionBD {
      */
 
     public Connection getConexion() {
+
         return conexion;
     }
 
