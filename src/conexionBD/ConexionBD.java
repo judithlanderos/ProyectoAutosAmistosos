@@ -5,28 +5,23 @@ import java.sql.*;
 public class ConexionBD {
     private Connection conexion;
     private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
     //private Statement statement;
     /* NOTA: Es preferible utilizar PreparedStatement para evitar
          SQL INJECTION
      */
+    private static ConexionBD conexionInstancia;
 
     public Connection getConexion() {
-
         return conexion;
     }
 
-    private ResultSet resultSet;
-
-    public ConexionBD(){
+    private ConexionBD(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-
             String URL = "jdbc:mysql://localhost:3306/autosamistosos"; //direccion de a que se conecta a mysql
             conexion = DriverManager.getConnection(URL,  "root",  "judilth@3");
-
             System.out.println("Yeeeeiiiii ya casi soy ISC");
-
         }catch(ClassNotFoundException e){
             // throw new RuntimeException(e);
             System.out.println("Error en el DRIVER");
@@ -35,6 +30,14 @@ public class ConexionBD {
         }
 
     }
+
+    public static ConexionBD getConexionInstancia(){
+        if(conexionInstancia == null){
+
+        }
+
+    }
+
     //Metodos para operaciones ABCC (ALTAS, BAJAS, CAMBIOS, CONSULTAS )
     //(DataManipulation Languaje)
     public boolean ejecutarInstruccionDML(String instruccionSQL) throws SQLException {
@@ -74,7 +77,7 @@ public class ConexionBD {
     }
 
     public static void main(String[] args) {
-        new ConexionBD();
+        ConexionBD conexionBD = ConexionBD.getConexionInstancia();
 
     }
 }//class
