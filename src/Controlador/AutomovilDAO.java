@@ -7,13 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class AutomovilDAO {
-     ConexionBD conexion = new ConexionBD();
+     ConexionBD conexionBD = ConexionBD.getConexionInstancia();
 
     public void agregarAutomovil(String modelo, double precioLista, String fechaFabricacion, String placa, String idCliente, String idMarca) {
         try {
             String sql = "INSERT INTO automovil (modelo, precio_lista, fecha_fabricacion, placa, Cliente_idCliente, Marca_idMarca) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement statement = conexion.getConexion().prepareStatement(sql);
+            PreparedStatement statement = conexionBD.getConexion().prepareStatement(sql);
             statement.setString(1, modelo);
             statement.setDouble(2, precioLista);
             statement.setString(3, fechaFabricacion);
@@ -35,7 +35,7 @@ public class AutomovilDAO {
     public void eliminarAutomovil(String placa) {
         try {
             String sql = "DELETE FROM automovil WHERE placa = ?";
-            PreparedStatement statement = conexion.getConexion().prepareStatement(sql);
+            PreparedStatement statement = conexionBD.getConexion().prepareStatement(sql);
             statement.setString(1, placa);
             int filasAfectadas = statement.executeUpdate();
 
@@ -52,7 +52,7 @@ public class AutomovilDAO {
     public void actualizarAutomovil(String placa, String nuevoModelo, double nuevoPrecioLista) {
         try {
             String sql = "UPDATE automovil SET modelo = ?, precio_lista = ? WHERE placa = ?";
-            PreparedStatement statement = conexion.getConexion().prepareStatement(sql);
+            PreparedStatement statement = conexionBD.getConexion().prepareStatement(sql);
             statement.setString(1, nuevoModelo);
             statement.setDouble(2, nuevoPrecioLista);
             statement.setString(3, placa);
@@ -73,7 +73,7 @@ public class AutomovilDAO {
     public ArrayList<Automovil> consultarAutomoviles() {
         ArrayList<Automovil> listaAutomoviles = new ArrayList<>();
         try {
-            Statement statement = conexion.getConexion().createStatement();
+            Statement statement = conexionBD.getConexion().createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM automovil");
 
             while (resultSet.next()) {

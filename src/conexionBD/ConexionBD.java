@@ -32,10 +32,14 @@ public class ConexionBD {
     }
 
     public static ConexionBD getConexionInstancia(){
-        if(conexionInstancia == null){
-
+        if(conexionInstancia == null) {
+            synchronized (ConexionBD.class) {
+                if (conexionInstancia == null) {
+                    conexionInstancia = new ConexionBD();
+                }
+            }
         }
-
+        return conexionInstancia;
     }
 
     //Metodos para operaciones ABCC (ALTAS, BAJAS, CAMBIOS, CONSULTAS )
