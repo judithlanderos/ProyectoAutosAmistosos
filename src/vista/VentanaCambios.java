@@ -84,4 +84,12 @@ public class VentanaCambios extends JInternalFrame implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
         }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+
+                new VentanaCambios().setVisible(true);
+            }
+        });
+    }
 }
