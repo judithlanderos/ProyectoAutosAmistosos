@@ -41,6 +41,35 @@ public class VentanaAltas extends JInternalFrame implements ActionListener {
         setLayout(new BorderLayout());
         setVisible(true);
 
+        btn_BotonSalir = new JButton("Salir");
+        add(btn_BotonSalir);
+        btn_guardar = new JButton("Guardar");
+        add(btn_guardar);
+        btn_restablecer = new JButton("Restablecer");
+        add(btn_restablecer);
+
+        lbl_Marca = new JLabel("Marca:");
+        add(lbl_Marca);
+        lbl_Modelo = new JLabel("Modelo:");
+        add(lbl_Modelo);
+        lbl_Placa = new JLabel("Placa:");
+        add(lbl_Placa);
+
+        cmb_ClienteIdCliente = new JComboBox<>();
+        add(cmb_ClienteIdCliente);
+        txt_MarcaIdMarca = new JTextField(10);
+        add(txt_MarcaIdMarca);
+        txt_fechaFabricacion = new JTextField(10);
+        add(txt_fechaFabricacion);
+        txt_idAutomovil = new JTextField(10);
+        add(txt_idAutomovil);
+        txt_modelo = new JTextField(10);
+        add(txt_modelo);
+        txt_placa = new JTextField(10);
+        add(txt_placa);
+        txt_precioLista = new JTextField(10);
+        add(txt_precioLista);
+
     }
     private boolean validarCampos() {
         String idAutomovilText = txt_idAutomovil.getText();
@@ -85,6 +114,21 @@ public class VentanaAltas extends JInternalFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btn_BotonSalir) {
+            this.dispose();
+        } else if (e.getSource() == btn_guardar) {
 
+            if (validarCampos()) {
+
+            }
+        } else if (e.getSource() == btn_restablecer) {
+            txt_idAutomovil.setText("");
+            txt_modelo.setText("");
+            txt_fechaFabricacion.setText("");
+            txt_placa.setText("");
+            txt_MarcaIdMarca.setText("");
+            txt_precioLista.setText("");
+        }
     }
-}
+ }
+
