@@ -9,7 +9,12 @@ import java.util.ArrayList;
 public class AutomovilDAO {
      ConexionBD conexionBD = ConexionBD.getConexionInstancia();
 
-    public void agregarAutomovil(String modelo, double precioLista, String fechaFabricacion, String placa, String idCliente, String idMarca) {
+    public void agregarAutomovil(String idAutomovil, String modelo, double precioLista, String fechaFabricacion, String placa, String idCliente, String idMarca) {
+        int cantidadAutomoviles = contarAutomovilesPorId(idAutomovil);
+        if (cantidadAutomoviles > 0) {
+            System.out.println("El ID del automóvil ya está en uso. Por favor, elija un ID diferente.");
+            return;
+        }
         try {
             String sql = "INSERT INTO automovil (modelo, precio_lista, fecha_fabricacion, placa, Cliente_idCliente, Marca_idMarca) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
@@ -31,7 +36,23 @@ public class AutomovilDAO {
             e.printStackTrace();
         }
     }
+    public int contarAutomovilesPorId(String idAutomovil) {
 
+        int cantidad = 0;
+        try {
+            String sql = "SELECT COUNT(*) FROM automovil WHERE idAutomovil = ?";
+            PreparedStatement statement = conexionBD.getConexion().prepareStatement(sql);
+            statement.setString(1, idAutomovil);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
     public void eliminarAutomovil(String placa) {
         try {
             String sql = "DELETE FROM automovil WHERE placa = ?";
