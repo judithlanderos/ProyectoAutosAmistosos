@@ -2,8 +2,10 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class VentanaBajas extends JInternalFrame {
+public class VentanaBajas extends JInternalFrame implements ActionListener {
 
     private JButton btmSalir;
     private JLabel btmPlaca;
@@ -26,5 +28,10 @@ public class VentanaBajas extends JInternalFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

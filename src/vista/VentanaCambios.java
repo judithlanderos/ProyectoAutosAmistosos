@@ -2,8 +2,10 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class VentanaCambios extends JInternalFrame {
+public class VentanaCambios extends JInternalFrame implements ActionListener {
 
         private JButton btm_Modificar = new JButton("MODIFICAR");
         private JButton btm_salir = new JButton("SALIR");
@@ -35,4 +37,8 @@ public class VentanaCambios extends JInternalFrame {
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
 }
