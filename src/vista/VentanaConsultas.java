@@ -24,7 +24,7 @@ public class VentanaConsultas extends JInternalFrame  implements ActionListener 
         miConexion = ConexionBD.getConexionInstancia();
 
         setTitle("Consultas");
-        setSize(600, 400);
+        setSize(800, 700);
         setClosable(true);
         setResizable(true);
         setMaximizable(true);
@@ -32,8 +32,6 @@ public class VentanaConsultas extends JInternalFrame  implements ActionListener 
         setBackground(Color.yellow);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setVisible(true);
-
 
         radioIdAutomovil = new JRadioButton("ID AUTOMOVIL");
         radioIdAutomovil.setBounds(10, 10, 150, 20);
@@ -80,19 +78,18 @@ public class VentanaConsultas extends JInternalFrame  implements ActionListener 
         btnRestablecer.addActionListener(this);
         add(btnRestablecer);
 
-        tablaContenido = new JTable();
-        tablaContenido.setModel(new DefaultTableModel(
-                new Object[][]{},
-                new String []{
-                        "idAutomovil", "modelo", "precio_lista", "fecha_fabricacion", "Cliente_idCliente", "placa", "Marca_idMarca"
-                }
-        ));
 
-        JScrollPane jScrollPanel = new JScrollPane(tablaContenido);
-        jScrollPanel.setBounds(10,200,560,150);
-        add(jScrollPanel);
+        Object[] columnas = {"ID Automovil", "Modelo", "Fecha Fabricación", "Placa", "ID Marca"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0);
+        tablaContenido = new JTable(modeloTabla);
+        JScrollPane jScrollPane1 = new JScrollPane(tablaContenido);
+        jScrollPane1.setBounds(10, 200, 560, 150);
+        add(jScrollPane1);
+
+        setVisible(true);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -100,15 +97,7 @@ public class VentanaConsultas extends JInternalFrame  implements ActionListener 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                JFrame frame = new JFrame("VENTANA CONSULTAS");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(600,400);
-                JDesktopPane desktopPane = new JDesktopPane();
-                frame.add(desktopPane, BorderLayout.CENTER);
-                VentanaConsultas ventanaConsultas = new VentanaConsultas();
-                desktopPane.add(ventanaConsultas);
-                ventanaConsultas.setVisible(true);
-                frame.setVisible(true);
+
                 new VentanaConsultas().setVisible(true);
             }
         });

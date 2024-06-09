@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal extends JFrame implements ActionListener{
     public VentanaPrincipal(){
         setTitle("Gestión de Autos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,21 +19,10 @@ public class VentanaPrincipal extends JFrame {
         JMenu menuConsultas = new JMenu("Consultas");
         JMenu menuCambios = new JMenu("Cambios");
 
-        JMenuItem menuItemAgregarAuto = new JMenuItem("Agregar Auto");
-        JMenuItem menuItemEliminarAuto = new JMenuItem("Eliminar Auto");
-        JMenuItem menuItemConsultarAutos = new JMenuItem("Consultar Autos");
-        JMenuItem menuItemModificarAuto = new JMenuItem("Modificar Auto");
-
-        menuItemAgregarAuto.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-
-        menuAltas.add(menuItemAgregarAuto);
-        menuBajas.add(menuItemEliminarAuto);
-        menuConsultas.add(menuItemConsultarAutos);
-        menuCambios.add(menuItemModificarAuto);
+        menuAltas.addActionListener(this);
+        menuBajas.addActionListener(this);
+        menuConsultas.addActionListener(this);
+        menuCambios.addActionListener(this);
 
         menuOperaciones.add(menuAltas);
         menuOperaciones.add(menuBajas);
@@ -44,6 +33,29 @@ public class VentanaPrincipal extends JFrame {
 
         setJMenuBar(menuBar);
         setLayout(new BorderLayout());
+    }
+
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String accion = e.getActionCommand();
+        switch (accion){
+            case "Altas":
+                new VentanaAltas().setVisible(true);
+                break;
+            case "Bajas":
+                new VentanaBajas().setVisible(true);
+                break;
+            case "Consultas":
+                new VentanaConsultas().setVisible(true);
+                break;
+            case "Cambios":
+                new VentanaCambios().setVisible(true);
+                break;
+            default:
+                break;
+        }
     }
 
     public static void main(String[] args) {

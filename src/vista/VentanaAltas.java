@@ -4,9 +4,11 @@ import Controlador.AutomovilDAO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
-public class VentanaAltas extends JInternalFrame {
+public class VentanaAltas extends JInternalFrame implements ActionListener {
 
     private AutomovilDAO automovilDAO;
     private JPanel pnl_Panel2;
@@ -81,4 +83,8 @@ public class VentanaAltas extends JInternalFrame {
         return true;
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
